@@ -1,13 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-My page test
-<link href = "compiledSCSS.css" type="text/css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-<div class="glitch" data-text="GLITCHRAIN">GLITCHRAIN</div>
 
+    <canvas id="bg-canvas"></canvas>
+
+    <main class="content-overlay">
+        <header>
+            <h1>Welcome to GlitchSpace</h1>
+            <p>Explore my projects, writing, and music below.</p>
+        </header>
+
+        <nav class="nav-container">
+            <div class="nav-card">
+                <h2>Articles</h2>
+                <ul>
+                    <li><a href="articles/article.html?file=ru/reward-prediction-error-0.md">Однорукий бандит, макаковая модель человека и ошибка предсказания</a></li>
+                    <!-- <li><a href="articles/article2.html">Future of Web Dev</a></li> -->
+                </ul>
+            </div>
+
+            <!-- <div class="nav-card">
+                <h2>Game Demos</h2>
+                <ul>
+                    <li><a href="games/space-shooter/index.html" target="_blank">Space Shooter</a></li>
+                    <li><a href="games/puzzle-game/index.html" target="_blank">Puzzle Quest</a></li>
+                </ul>
+            </div> -->
+
+            <div class="nav-card">
+                <h2>Music</h2>
+                <div class="music-track">
+                    <p>Freelancer OST Liberty (FullMix)</p>
+                    <audio controls src="music/Freelancer_OST_Liberty_0_FullMix.ogg"></audio>
+                </div>
+                <div class="music-track">
+                    <p>Our Tulips (MIX6)</p>
+                    <audio controls src="music/OutTulips(MIX6).mp3"></audio>
+                </div>
+                <div class="music-track">
+                    <p>Soviet Not A Salsa</p>
+                    <audio controls src="music/RedAlertOst_0_SovietSalsa 2024-10-02 2246.ogg"></audio>
+                </div>
+            </div>
+        </nav>
+    </main>
+
+    <script src="script.js"></script>
 </body>
-
 </html>

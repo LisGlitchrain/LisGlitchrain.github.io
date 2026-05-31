@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Reader</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <main class="content-overlay">
+        <div class="nav-card" style="margin-bottom: 2rem; width: 100%; max-width: 800px;">
+            <a href="../index.html">&larr; Back to Home</a>
+        </div>
+
+        <article class="nav-card markdown-body" id="article-content" style="width: 100%; max-width: 800px;">
+            <p>Loading content...</p>
+        </article>
+    </main>
+
+    <script src="../script.js"></script>
+
+    <script>
+        // 1. Get the file name from the URL parameter (e.g., article.html?file=my-first-article.md)
+        const urlParams = new URLSearchParams(window.location.search);
+        const markdownFile = urlParams.get('file');
+
+        if (markdownFile) {
+            // 2. Fetch the text from the raw markdown file nearby
+            fetch(markdownFile)
+                .then(response => {
+                    if (!response.ok) throw new Error("Article file not found");
+                    return response.text();
+                })
+                .then(markdownText => {
+                    // 3. Convert Markdown text to HTML and inject it into the card
+                    document.getElementById('article-content').innerHTML = marked.parse(markdownText);
+                    
+                    // Optional: Update the browser tab title dynamically based on the first heading
+                    const firstHeading = document.querySelector('#article-content h1');
+                    if (firstHeading) document.title = firstHeading.innerText;
+                })
+                .catch(error => {
+                    document.getElementById('article-content').innerHTML = `<h2>Error</h2><p>${error.message}</p>`;
+                });
+        } else {
+            document.getElementById('article-content').innerHTML = `<h2>Error</h2><p>No article specified.</p>`;
+        }
+    </script>
+</body>
+</html>
